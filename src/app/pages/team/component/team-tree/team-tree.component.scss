@@ -1,0 +1,179 @@
+.Treant {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+  overflow-x: auto;
+  position: relative;
+}
+
+.Treant .node {
+  background-color: #2e2e4d;
+  border: 1px solid #3f3f66;
+  border-radius: 10px;
+  padding: 12px;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  width: 240px;
+  text-align: right;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.Treant .node:hover {
+  transform: scale(1.02);
+}
+
+.Treant .photo {
+  width: 60px;
+  height: 60px;
+  background-color: #888;
+  border-radius: 8px;
+  margin-left: 10px;
+  float: right;
+}
+
+.Treant .info {
+  overflow: hidden;
+  text-align: right;
+}
+
+.Treant .name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.Treant .team {
+  font-size: 0.85rem;
+  color: #a5a5c9;
+  margin-top: 4px;
+}
+
+.Treant .role {
+  font-size: 0.75rem;
+  color: #ccc;
+  margin-top: 2px;
+}
+
+.Treant .actions {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.Treant .node:hover .actions {
+  opacity: 1;
+}
+
+.Treant .actions nb-icon {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 5px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  transition: background 0.2s ease;
+}
+
+.Treant .actions nb-icon:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.Treant .collapsed .node {
+  opacity: 0.4;
+  transform: scale(0.95);
+  transition: all 0.3s ease-in-out;
+}
+.Treant .custom-node:hover .actions {
+  opacity: 1 !important;
+}
+.Treant .node.custom-node {
+  width: 240px;
+  padding: 12px;
+  background: #2e2e4d;
+  border-radius: 10px;
+  border: 1px solid #3f3f66;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: right;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.Treant .node.custom-node:hover .actions {
+  opacity: 1;
+}
+
+.photo {
+  float: right;
+  width: 60px;
+  height: 60px;
+  background-color: #aaa;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+.info {
+  overflow: hidden;
+  text-align: right;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.team {
+  font-size: 0.85rem;
+  color: #a5a5c9;
+  margin-top: 4px;
+}
+
+.role {
+  font-size: 0.75rem;
+  color: #ccc;
+  margin-top: 2px;
+}
+
+.actions {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.actions nb-icon {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 5px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  transition: background 0.2s ease;
+}
+
+.actions nb-icon:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.Treant .node.custom-node .photo {
+  float: right;
+  width: 60px;
+  height: 60px;
+  background-color: #aaa;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+.no-collapse-btn .collapse-switch {
+  display: none !important;
+}
+::ng-deep .collapse-switch{
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
+  border: none !important;
+}

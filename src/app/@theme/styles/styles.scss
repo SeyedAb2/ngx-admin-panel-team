@@ -1,33 +1,34 @@
+// 👇 فونت انگلیسی پیش‌فرض (می‌تونی بعداً فونت فارسی جایگزین کنی)
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
 
-// themes - our custom or/and out of the box themes
+// 👇 تعریف جهت راست‌چین قبل از نصب
+$nb-direction: rtl;
+
+// 👇 تم‌های سفارشی یا پیش‌فرض
 @import 'themes';
 
-// framework component themes (styles tied to theme variables)
+// 👇 تم‌های گلوبال برای Nebular
 @import '@nebular/theme/styles/globals';
 @import '@nebular/auth/styles/globals';
 
+// 👇 Bootstrap پایه (اگر استفاده می‌کنی)
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/grid';
 
-// loading progress bar theme
+// 👇 نوار بارگذاری
 @import './pace.theme';
 
+// 👇 فایل‌های layout و override
 @import './layout';
 @import './overrides';
 
-// install the framework and custom global styles
+// 👇 نصب استایل‌های Nebular و layout سفارشی
 @include nb-install() {
-
-  // framework global styles
-  @include nb-theme-global();
-  @include nb-auth-global();
-
-  @include ngx-layout();
-  // loading progress bar
-  @include ngx-pace-theme();
-
-  @include nb-overrides();
+  @include nb-theme-global();   // استایل‌های عمومی تم
+  @include nb-auth-global();    // استایل‌های auth
+  @include ngx-layout();        // استایل‌های layout
+  @include ngx-pace-theme();    // استایل نوار لودینگ
+  @include nb-overrides();      // تغییرات اختصاصی
 };

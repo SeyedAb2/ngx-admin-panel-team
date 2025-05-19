@@ -6,6 +6,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from './@core/utils/analytics.service';
 import { SeoService } from './@core/utils/seo.service';
+import { NbLayoutDirection, NbLayoutDirectionService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-app',
@@ -13,7 +14,8 @@ import { SeoService } from './@core/utils/seo.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private analytics: AnalyticsService, private seoService: SeoService) {
+  constructor(private analytics: AnalyticsService, private seoService: SeoService,private dirService: NbLayoutDirectionService) {
+    this.dirService.setDirection(NbLayoutDirection.RTL);
   }
 
   ngOnInit(): void {

@@ -4,12 +4,12 @@ import { Component } from '@angular/core';
   selector: 'ngx-three-columns-layout',
   styleUrls: ['./three-columns.layout.scss'],
   template: `
-    <nb-layout windowMode>
+    <nb-layout direction="rtl" windowMode>
       <nb-layout-header fixed>
         <ngx-header></ngx-header>
       </nb-layout-header>
 
-      <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive>
+      <nb-sidebar state="expanded" position="right" right class="menu-sidebar" tag="menu-sidebar" responsive>
         <ng-content select="nb-menu"></ng-content>
       </nb-sidebar>
 
