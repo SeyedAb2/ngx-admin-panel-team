@@ -62,11 +62,11 @@
   left: 8px;
   display: flex;
   gap: 6px;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.2s ease;
 }
 
-.Treant .node:hover .actions {
+.collapse-switch .node:hover .actions {
   opacity: 1;
 }
 
@@ -82,7 +82,7 @@
   background-color: rgba(255, 255, 255, 0.2);
 }
 .Treant .collapsed .node {
-  opacity: 0.4;
+  opacity: 1.4;
   transform: scale(0.95);
   transition: all 0.3s ease-in-out;
 }
@@ -104,8 +104,13 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.Treant .node.custom-node:hover .actions {
-  opacity: 1;
+.custom-node پ {
+  &:hover{
+    &>.actions{
+
+      opacity: 1;
+    }
+  }
 }
 
 .photo {
@@ -145,7 +150,7 @@
   left: 8px;
   display: flex;
   gap: 6px;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.2s ease-in-out;
 }
 
@@ -176,4 +181,90 @@
   height: 100% !important;
   background: transparent !important;
   border: none !important;
+}
+.actions {
+  position: absolute;
+  top: 8px;
+  z-index: 5;
+  left: 8px;
+  display: flex;
+  flex-direction: column; // ← مهم
+  gap: 6px;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.custom-node:hover .actions {
+  opacity: 1 !important;
+}
+
+.actions .icon {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 5px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.actions .icon:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+@keyframes fadeOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.9); }
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+
+.confirm-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #2e2e4d;
+  padding: 20px 30px;
+  border-radius: 12px;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+  max-width: 320px;
+  box-shadow: 0 0 20px #000;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#confirmYes {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+#confirmNo {
+  background-color: #aaa;
+  color: #000;
 }

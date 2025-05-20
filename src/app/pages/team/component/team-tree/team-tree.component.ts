@@ -38,35 +38,35 @@ export class TeamTreeComponent implements AfterViewInit {
         }
       },
       nodeStructure: {
-        innerHTML: this.card("Ali Rezaei", "Marketing", "Team Lead"),
+        innerHTML: this.card("Ali Rezaei", "Marketing", "Team Lead",'ali'),
         collapsed: false,
         stackChildren: true,
         childrenDropLevel: 1,
         children: [
           {
-            innerHTML: this.card("Mina Karimi", "Marketing", "Graphic Designer"),
+            innerHTML: this.card("Mina Karimi", "Marketing", "Graphic Designer",'mina'),
             collapsed: false,
             // stackChildren: true,
             // childrenDropLevel: 1,
             children: [
               {
-                innerHTML: this.card("Hamed Afshar", "Design", "Programmer"),
+                innerHTML: this.card("Hamed Afshar", "Design", "Programmer",'hamed'),
                 collapsed: false
               }
             ]
           },
           {
-            innerHTML: this.card("Sara Jafari", "Marketing", "Content Specialist"),
+            innerHTML: this.card("Sara Jafari", "Marketing", "Content Specialist",'sara'),
             collapsed: false,
             stackChildren: true,
             // childrenDropLevel: 1,
             children: [
               {
-                innerHTML: this.card("Fatemeh Mohammadi", "Marketing", "Content Designer"),
+                innerHTML: this.card("Fatemeh Mohammadi", "Marketing", "Content Designer",'fatemeh'),
                 collapsed: false
               },
               {
-                innerHTML: this.card("Reza Nazari", "Marketing", "Analyst"),
+                innerHTML: this.card("Reza Nazari", "Marketing", "Analyst",'reza'),
                 collapsed: false
               }
             ]
@@ -76,37 +76,13 @@ export class TeamTreeComponent implements AfterViewInit {
     };
 
     new Treant(config);
-
-    // Delegated click handling for icons
-    document.getElementById('tree-simple')?.addEventListener('click', (event) => {
-      const target = event.target as HTMLElement;
-      if (target.tagName === 'NB-ICON') {
-        const icon = target.getAttribute('icon');
-        const parentNode = target.closest('.node');
-        const name = parentNode?.querySelector('.name')?.textContent?.trim();
-        if (icon === 'edit-2-outline') {
-          console.log('Edit:', name);
-        } else if (icon === 'trash-2-outline') {
-          console.log('Delete:', name);
-        }
-      }
-    });
-    document.getElementById('tree-simple')?.addEventListener('click', (event) => {
-      const node = (event.target as HTMLElement).closest('.node');
-      if (node && !node.classList.contains('clicked-on-icon')) {
-        const parent = node.parentElement;
-        if (parent?.classList.contains('collapsed')) {
-          parent.classList.remove('collapsed');
-        } else {
-          parent?.classList.add('collapsed');
-        }
-      }
-    });
+    
+    
   }
 
-  card(name: string, team: string, role: string): string {
+  card(name: string, team: string, role: string, id: string): string {
     return `
-      <div class="node custom-node" style="
+      <div class="node custom-node" id="node-${id}" style="
           width: 240px;
           padding: 12px;
           background: #2e2e4d;
@@ -137,28 +113,22 @@ export class TeamTreeComponent implements AfterViewInit {
           <div class="actions" style="
               position: absolute;
               top: 8px;
+              z-index:5;
+              flex-direction:column;
               left: 8px;
               display: flex;
               gap: 6px;
-              opacity: 0;
+              opacity: 1;
               transition: opacity 0.2s ease-in-out;">
-            <nb-icon icon="edit-2-outline" title="Edit" style="
-              background-color: rgba(255, 255, 255, 0.08);
-              padding: 5px;
-              border-radius: 6px;
-              font-size: 1.1rem;
-              transition: background 0.2s ease;"></nb-icon>
-            
-            <nb-icon icon="trash-2-outline" title="Delete" style="
-              background-color: rgba(255, 255, 255, 0.08);
-              padding: 5px;
-              border-radius: 6px;
-              font-size: 1.1rem;
-              transition: background 0.2s ease;"></nb-icon>
+            <span class="icon edit" title="Edit">✏️</span>
+            <span class="icon delete" title="Delete" (click)="delete(${id})" data-id="${id}">🗑️</span>
+            <span class="icon add" title="Add" data-id="${id}">➕</span>
           </div>
         </div>
       </div>
     `;
   }
-
+  delete(id:any){
+    console.log(id)
+  }
 }
